@@ -1,4 +1,7 @@
 cd toproject
+git clone https://github.com/silvesterwali/elganstiki.git
+cd elganstiki
+
 
 composer install
 
