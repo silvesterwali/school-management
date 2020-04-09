@@ -17,7 +17,7 @@ php artisan migrate:refresh --seed
 
 php artisan serve ----untuk jalankan server
 
-menyimpan ke git
+menyimpan ke git serve
 -git add .
 -git commit -m "komentar anda disini"
 -git push origin master
