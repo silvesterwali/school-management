@@ -2,7 +2,6 @@ cd toproject
 git clone https://github.com/silvesterwali/elganstiki.git
 cd elganstiki
 
-
 composer install
 
 npm install
@@ -17,5 +16,14 @@ php artisan migrate:refresh --seed
 ###npm run dev....jika menggunkan npm
 
 php artisan serve ----untuk jalankan server
- git pull ... 
- git push ...
+
+menyimpan ke git
+-git add .
+-git commit -m "komentar anda disini"
+-git push origin master
+
+menarik data dari github
+-pull origin master
+
+check status
+-git status
