@@ -23,7 +23,7 @@ menyimpan ke git
 -git push origin master
 
 menarik data dari github
--pull origin master
+-git pull origin master
 
 check status
 -git status
