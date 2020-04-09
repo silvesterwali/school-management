@@ -35,6 +35,7 @@ class KelasSiswaMapelController extends Controller
                 ->addColumn('nisn', function ($data) {
                     return $data->class_student->student->nisn;
                 })
+
                 ->addColumn('nama', function ($data) {
                     return $data->class_student->student->nama;
                 })
