@@ -22,5 +22,5 @@ class ClassCourse extends Model
     {
         return $this->belongsTo('App\Course');
     }
-
+// bro saya lagi rubah disini
 }
