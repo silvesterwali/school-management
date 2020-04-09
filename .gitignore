@@ -9,7 +9,10 @@
 /public/fonts
 /public/webfonts
 /public/scss
-/public/assets
+/public/assets/brand
+/public/assets/icons
+/public/assets/favicon
+/public/assets/img/avatars
 /public/svg
 /public/icons
 /public/vendors
