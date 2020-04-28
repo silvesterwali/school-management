@@ -3,6 +3,7 @@ git clone https://github.com/silvesterwali/elganstiki.git
 cd elganstiki
 
 composer install
+#? composer install --ignore-platform-reqs jika terjadi error
 
 npm install
 
