@@ -108,8 +108,7 @@
                                                     </td>
                                                     <td>
                                                     <div class="form-group{{ $errors->has('keterangan') ? ' has-danger' : '' }}">
-                                                    <textarea name="keterangan"
-                                                        placeholder="{{__('Catatan')}}">
+                                                    <textarea name="keterangan">
                                                             {{ $km->keterangan }}
                                                         <textarea>
 
@@ -123,7 +122,7 @@
                                                 </td>
                                                 <td colspan="2">
                                                     <button type="submit" class="btn btn-success btn-sm" >
-                                                        {{__('Masukan Dan Simpan')}}
+                                                        {{__('Masukan Dan Simpan') }}
                                                     </button>
                                                 </td>
                                             </tr>
@@ -139,7 +138,7 @@
 </div>
 @endsection
 @section('javascript')
-<script src="{{ asset('DataTables') }}/jQuery-3.3.1/jquery-3.3.1.min.js"></script>
+<!-- <script src="{{ asset('DataTables') }}/jQuery-3.3.1/jquery-3.3.1.min.js"></script>
 <script src="{{ asset('DataTables')}}/datatables.min.js"></script>
 <script
 src="{{ asset('DataTables')}}/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
@@ -147,5 +146,5 @@ src="{{ asset('DataTables')}}/DataTables-1.10.20/js/dataTables.bootstrap4.min.js
     $(document).ready(function(){
         $('#Alkdj').DataTable();
     });
-</script>
+</script> -->
 @endsection

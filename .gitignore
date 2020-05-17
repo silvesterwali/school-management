@@ -11,12 +11,8 @@
 /public/scss
 /public/assets/brand
 /public/assets/icons
-<<<<<<< HEAD
-/public/assets/favicon/
-=======
 /public/assets/favicon
 /public/assets/img/avatars
->>>>>>> 54f551220fceffb3b2e41e0e92cffee207e92ffb
 /public/svg
 /public/icons
 /public/vendors
