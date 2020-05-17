@@ -62,7 +62,7 @@
                                                     <div class="form-group{{ $errors->has('kkmpengetahuan') ? ' has-danger' : '' }}">
                                                     <input type="number" name="kkmpengetahuan[]"
                                                         class="form-control form-control-alternative{{ $errors->has('kkmpengetahuan') ? ' is-invalid' : '' }}"
-                                                        placeholder="{{ __('KKM Pengetahuan') }}" value="{{ $km->kkmpengetahuan }}">
+                                                        placeholder="{{__('KKM Pengetahuan') }}" value="{{ $km->kkmpengetahuan }}">
                                                     @include('dashboard.base.feedback', ['field' => 'kkmpengetahuan'])
                                                 </div>
                                                     </td>
@@ -70,7 +70,7 @@
                                                     <div class="form-group{{ $errors->has('kkmketerampilan') ? ' has-danger' : '' }}">
                                                     <input type="number" name="kkmketerampilan[]"
                                                         class="form-control form-control-alternative{{ $errors->has('kkmketerampilan') ? ' is-invalid' : '' }}"
-                                                        placeholder="{{ __('KKM keterampilan') }}" value="{{ $km->kkmketerampilan }}">
+                                                        placeholder="{{__('KKM keterampilan') }}" value="{{ $km->kkmketerampilan }}">
                                                     @include('dashboard.base.feedback', ['field' => 'kkmketerampilan'])
                                                 </div>
                                                     </td>
@@ -78,7 +78,7 @@
                                                     <div class="form-group{{ $errors->has('nilaitugas') ? ' has-danger' : '' }}">
                                                     <input type="number" name="nilaitugas[]"
                                                         class="form-control form-control-alternative{{ $errors->has('nilaitugas') ? ' is-invalid' : '' }}"
-                                                        placeholder="{{ __('Nilai Tugas') }}" value="{{ $km->nilaitugas }}">
+                                                        placeholder="{{__('Nilai Tugas') }}" value="{{ $km->nilaitugas }}">
                                                     @include('dashboard.base.feedback', ['field' => 'nilaitugas'])
                                                 </div>
                                                     </td>
@@ -86,7 +86,7 @@
                                                     <div class="form-group{{ $errors->has('ulanganharian') ? ' has-danger' : '' }}">
                                                     <input type="number" name="ulanganharian[]"
                                                         class="form-control form-control-alternative{{ $errors->has('ulanganharian') ? ' is-invalid' : '' }}"
-                                                        placeholder="{{ __('ulangan harian') }}" value="{{ $km->ulanganharian }}">
+                                                        placeholder="{{__('ulangan harian') }}" value="{{ $km->ulanganharian }}">
                                                     @include('dashboard.base.feedback', ['field' => 'ulanganharian'])
                                                 </div>
                                                     </td>
@@ -94,7 +94,7 @@
                                                     <div class="form-group{{ $errors->has('uts') ? ' has-danger' : '' }}">
                                                     <input type="number" name="uts[]"
                                                         class="form-control form-control-alternative{{ $errors->has('uts') ? ' is-invalid' : '' }}"
-                                                        placeholder="{{ __('UTS') }}" value="{{ $km->uts }}">
+                                                        placeholder="{{__('UTS') }}" value="{{ $km->uts }}">
                                                     @include('dashboard.base.feedback', ['field' => 'uts'])
                                                 </div>
                                                     </td>
@@ -102,7 +102,7 @@
                                                     <div class="form-group{{ $errors->has('uas') ? ' has-danger' : '' }}">
                                                     <input type="number" name="uas[]"
                                                         class="form-control form-control-alternative{{ $errors->has('uas') ? ' is-invalid' : '' }}"
-                                                        placeholder="{{ __('UAS') }}" value="{{ $km->uas }}">
+                                                        placeholder="{{__('UAS') }}" value="{{ $km->uas }}">
                                                     @include('dashboard.base.feedback', ['field' => 'uas'])
                                                 </div>
                                                     </td>
@@ -110,7 +110,8 @@
                                                     <div class="form-group{{ $errors->has('keterangan') ? ' has-danger' : '' }}">
                                                     <textarea name="keterangan"
                                                         placeholder="{{__('Catatan')}}">
-                                                        {{ $km->keterangan }}<textarea>
+                                                            {{ $km->keterangan }}
+                                                        <textarea>
 
                                                     @include('dashboard.base.feedback', ['field' => 'keterangan'])
                                                 </div>
@@ -120,7 +121,7 @@
                                             <tr>
                                                 <td colspan="7">
                                                 </td>
-                                                <td>
+                                                <td colspan="2">
                                                     <button type="submit" class="btn btn-success btn-sm" >
                                                         {{__('Masukan Dan Simpan')}}
                                                     </button>

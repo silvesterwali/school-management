@@ -35,7 +35,7 @@
                         @method('put')
                         <div class="table-responsive">
                             <table
-                                class=" table  table-sm table-hover table-bordered"
+                                class=" table  table-sm table-hover table-bordered table-condensed"
                                 cellspacing="0"
                                 style="font-size:12px ;widht:100%"
                                 id="Alkdj">
@@ -97,9 +97,7 @@
                                                     @include('dashboard.base.feedback', ['field' => 'alpha'])
                                                 </div>
                                             </td>
-                                            <td class="col-sm-4">
-
-
+                                            <td >
 
                                                     <textarea name="keterangan[]" class="small text-left form-control form-control-alternative{{ $errors->has('keterangan') ? ' is-invalid' : '' }}" placeholder="{{__('keterangan')}}">
                                                     {{ $dt->Keterangan }}
@@ -112,8 +110,8 @@
 
                                     @endforeach()
                                     <tr>
-                                            <td colspan="7"></td>
-                                            <td>
+                                            <td colspan="6"></td>
+                                            <td colspan="2">
                                                 <button type="submit" class="btn btn-success">Simpan Absensi</button>
                                             </td>
                                         </tr>

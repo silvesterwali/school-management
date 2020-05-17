@@ -38,7 +38,7 @@ class KelasManagement extends Controller
                 ->addColumn('action', function ($data) {
 
                     $is_aktif = $data->isActive == 1 ? route('nonactive.kelas', $data->id) : route('active.kelas', $data->id);
-                    $is_what  = $data->isActive == 1 ? "Un active" : "Active";
+                    $is_what  = $data->isActive == 1 ? "Unactive" : "Active";
                     $btn1     = route('kelas.edit', $data->id);
                     $btnLihat = route('kelas.show', $data->id);
                     $btnedit  = '<a class="dropdown-item" href="' . $btn1 . '"> <i class="fa fa-pencil-alt text-info"></i> Edit</a>';
