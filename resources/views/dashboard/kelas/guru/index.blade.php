@@ -10,6 +10,7 @@
         <div class="fade-in">
 
             <div class="row">
+
                 @foreach($kelas as $k)
 
                 <div class="col-sm-6 col-lg-4">
@@ -23,6 +24,9 @@
                             </div>
                             <div>
                                 <div class="text-value ">{{ $k['nama'] }} </div>
+
+
+
                                 <div class=" text-uppercase font-weight-bold small">Wali kelas</div>
 
                                 @if($k['isWali'])

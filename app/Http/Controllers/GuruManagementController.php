@@ -26,26 +26,26 @@ class GuruManagementController extends Controller
         if ($request->ajax()) {
             $data = Teacher::latest()->get();
             return DataTables::of($data)
-                ->addColumn('sts', function ($data) {
-                    $a = '';
-                    switch ($data->status) {
-                        case '0':
-                            $a = "Non Aktif";
+            // ->addColumn('sts', function ($data) {
+            //     $a = '';
+            //     switch ($data->status) {
+            //         case '0':
+            //             $a = "Non Aktif";
 
-                            break;
-                        case '1':
-                            $a = "Aktif";
-                            break;
-                        case '2':
-                            $a = "Pensiun";
-                            break;
+            //             break;
+            //         case '1':
+            //             $a = "Aktif";
+            //             break;
+            //         case '2':
+            //             $a = "Pensiun";
+            //             break;
 
-                        default:
-                            # code...
-                            break;
-                    }
-                    return $a;
-                })
+            //         default:
+            //             # code...
+            //             break;
+            //     }
+            //     return $a;
+            // })
                 ->addColumn('akses', function ($data) {
                     return $data->user->menuroles;
                 })

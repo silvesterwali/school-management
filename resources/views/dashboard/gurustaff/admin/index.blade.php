@@ -20,7 +20,7 @@
                                  <tr>
                                 <th>NIP</th>
                                 <th>NAMA</th>
-                                <th>STATUS</th>
+                                <!-- <th>STATUS</th> -->
                                 <th>TANGGAL MASUK</th>
                                 <th>PENDIDIKAN</th>
                                  <th>ROLE AKSES </th>
@@ -64,10 +64,10 @@
                         data:'nama',
                         name:'nama',
                     },
-                    {
-                        data:'sts',
-                        name:'sts',
-                    },
+                    // {
+                    //     data:'sts',
+                    //     name:'sts',
+                    // },
                     {
                         data:'tanggalgabung',
                         name:'tanggalgabung',
