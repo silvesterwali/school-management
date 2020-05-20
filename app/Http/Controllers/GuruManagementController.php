@@ -105,7 +105,7 @@ class GuruManagementController extends Controller
             'jabatan'            => 'required',
             'alamat'             => 'required',
             'nohp'               => 'required',
-            'status'             => 'required',
+            // 'status'             => 'required',
             'username'           => 'required',
             'kode_akses'         => 'required|min:6|unique:users,email',
             'password'           => 'required|min:6|confirmed',
@@ -170,7 +170,7 @@ class GuruManagementController extends Controller
             'jenjang_pendidikan' => 'required',
             'alamat'             => 'required',
             'nohp'               => 'required',
-            'status'             => 'required',
+            // 'status'             => 'required',
             'jabatan'            => 'required',
         ]);
 

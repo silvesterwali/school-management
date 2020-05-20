@@ -55,7 +55,7 @@
             </div>
             <div class="card " style="width:44%">
               <div class="card-body text-center">
-                <img style="height:300px;widht:auto;overflow:hidden " class="img-thumbnail img-responsive" src="{{  URL::to('/assets/img/SEKOLAH-DEPAN-1240x400.jpg')}}">
+                <img style="height:300px;widht:auto;overflow:hidden " class="img-thumbnail img-responsive" src="{{  URL::to('/assets/img/svg/kembalisekolah.svg')}}">
               </div>
             </div>
           </div>
