@@ -76,7 +76,7 @@
                                    </div>
 
 
-
+<!--
                                    <div class="col-sm-3">
                                         <div class="form-group {{ $errors->has('status') ? 'has-danger': '' }}">
                                              <label>{{__('Status')}}</label>
@@ -89,7 +89,7 @@
                                              </select>
                                                   @include('dashboard.base.feedback', ['field' => 'status'])
                                         </div>
-                                   </div>
+                                   </div> -->
 
 
 

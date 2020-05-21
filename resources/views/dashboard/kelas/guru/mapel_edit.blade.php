@@ -110,7 +110,7 @@
                                                     <div class="form-group{{ $errors->has('keterangan') ? ' has-danger' : '' }}">
                                                     <textarea name="keterangan">
                                                             {{ $km->keterangan }}
-                                                        <textarea>
+                                                    </textarea>
 
                                                     @include('dashboard.base.feedback', ['field' => 'keterangan'])
                                                 </div>
