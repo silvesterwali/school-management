@@ -225,3 +225,5 @@ Route::group(['middleware' => ['get.menu']], function () {
     });
 
 });
+
+Route::get('/testpdf', 'TestingPdfController@index');

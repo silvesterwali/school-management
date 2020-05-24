@@ -109,9 +109,24 @@ class SiswaPrintMandiriController extends Controller
         $html = '<!DOCTYPE html>
             <html>
                 <head>
+                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
                     <title>Laporan Semester tahunan</title>
+
                     <style>
-                   h3 ,h6 {
+                    body {
+                        background: rgb(204,204,204);
+                      }
+                      page {
+                        background: white;
+                        display: block;
+                        margin: 0 auto;
+                        margin-bottom: 0.5cm;
+                        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+                      }
+                    .page-break {
+                        page-break-after: always;
+                    }
+                    h3 ,h6 {
                         margin-top:10px;
                         margin-bottom:5px;
                     }
@@ -162,6 +177,14 @@ class SiswaPrintMandiriController extends Controller
                     </style>
                 </head>
                 <body>
+                <div style="clear:both; position:relative;">
+    <div style="position:absolute; left:0pt; width:192pt;">
+        LEFT COLUMN
+    </div>
+    <div style="margin-left:200pt;">
+        RIGHT COLUMN
+    </div>
+</div>
                     <div style="margin-left:50px;margin-right:50px">
                         <h3>Laporan Semester ' . $semester . '</h3>
                         ' . $alamat . '
