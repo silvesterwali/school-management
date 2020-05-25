@@ -27,3 +27,5 @@ menarik data dari github
 
 check status
 -git status
+// untuk packega tcpdf
+-composer require elibyy/tcpdf-laravel
