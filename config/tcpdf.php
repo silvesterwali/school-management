@@ -6,7 +6,7 @@ return [
     'unicode'               => true,
     'encoding'              => 'UTF-8',
     'font_directory'        => '',
-    'image_directory'       => url('assets/img/'),
+//'image_directory'       => url('assets/img/'),
     'tcpdf_throw_exception' => false,
     'use_fpdi'              => false,
     'use_original_header'   => false,
@@ -17,8 +17,8 @@ return [
     // https://raw.githubusercontent.com/tecnickcom/TCPDF/develop/config/tcpdf_config.php
 
     //    'path_main'           => '', // K_PATH_MAIN
-    'path_url'              => url('assets/img/'), // K_PATH_URL
-    'header_logo'           => url('assets/img/logo.png'), // PDF_HEADER_LOGO
+    // 'path_url'              => url('assets/img/'), // K_PATH_URL
+    //'header_logo'           => url('assets/img/logo.png'), // PDF_HEADER_LOGO
     'header_logo_width'     => '50', // PDF_HEADER_LOGO_WIDTH
     //    'path_cache'          => '', // K_PATH_CACHE
     //    'blank_image'         => '', // K_BLANK_IMAGE

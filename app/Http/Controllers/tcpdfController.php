@@ -34,62 +34,39 @@ class tcpdfController extends Controller
 
 // set image scale factor
         PDF2::setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-// set some language-dependent strings (optional)
-        if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-            require_once dirname(__FILE__) . '/lang/eng.php';
-            PDF2::setLanguageArray($l);
-        }
-
-// ---------------------------------------------------------
+//-------------------------------------------------------
 
 // set font
+        PDF2::AddPage();
         PDF2::SetFont('times', 'B', 12);
+        PDF2::Cell(0, 2, 'RAPOR', 0, 1, 'C');
+        PDF2::Cell(0, 2, 'SEKOLAH MENENGAH PERTAMA', 0, 1, 'C');
+        PDF2::Cell(0, 2, '(SMP)', 0, 1, 'C');
+
+        PDF2::Image('assets/img/logo.png', '55', '65', 40, 40, '', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        PDF2::Ln(60);
+        PDF2::SetFont('times', 'B', 9);
+
+        PDF2::Cell(0, 5, 'NAMA PESERTA DIDIK', 0, 1, 'C');
+        PDF2::SetFont('times', 'B', 11);
+
+        PDF2::Cell(0, 2, 'SIVLESTER', 0, 1, 'C');
+        PDF2::Ln(5);
+        PDF2::SetFont('times', 'B', 9);
+
+        PDF2::Cell(0, 5, 'NIS', 0, 1, 'C');
+        PDF2::SetFont('times', 'B', 11);
+
+        PDF2::Cell(0, 2, '923874283', 0, 1, 'C');
+
+        PDF2::Ln(30);
+        PDF2::SetFont('times', 'B', 9);
+        PDF2::Cell(0, 5, 'KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN', 0, 1, 'C');
 
 // Start First Page Group
         PDF2::startPageGroup();
 
 // add a page
-        PDF2::AddPage();
-        $imgLogo = url('assets/img/avatars/1.png');
-// set some text to print
-
-        $txt = <<<EOD
-RAPOR
-
-SEKOLAH MENENGAH PERTAMA
-          (SMP)
-
-
-
-
-
-
-
-
-
-        NAMA PESERTA
-        silvester
-
-        NIS
-        heroiwuerhf
-
-
-
-
-
-
-
-
-
-
-
-KEMENTRIAN PENDIDIKAN DAN KEBUDAYAAN
-EOD;
-// print a block of text using Write()
-        PDF2::Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
-
-        PDF2::Image(url('assets/img/logo.png'), 15, 140, 75, 113, 'png', 'http://www.tcpdf.org', '', true, 150, '', false, false, 1, false, false, false);
 
 // add second page
 
@@ -105,7 +82,7 @@ EOD;
         PDF2::SetFont('times', '', 10);
 
         $tbl = '
-<table cellspacing="0" cellpadding="10" border="0.2">
+<table cellspacing="0" cellpadding="5" border="0.2">
     <tr>
         <th>Nama Sekolah</th>
         <td>SMP SANTO YOSEPH DENPASAR</td>
