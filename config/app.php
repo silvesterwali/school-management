@@ -164,6 +164,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Elibyy\TCPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -231,6 +232,7 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
         'DataTables'   => Yajra\DataTables\DataTablesServiceProvider::class,
         'PDF'          => Barryvdh\DomPDF\Facade::class,
+        'PDF2'         => Elibyy\TCPDF\Facades\TCPDF::class,
 
     ],
 
