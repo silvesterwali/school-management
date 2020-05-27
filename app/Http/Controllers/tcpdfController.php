@@ -519,6 +519,8 @@ class tcpdfController extends Controller
     </tr>
 </table>';
 
+        // untuk table extrakurikuler
+
         PDF2::writeHTML($tableAbsensi, true, false, false, false, '');
 
         PDF2::Ln(1);

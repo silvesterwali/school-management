@@ -26,12 +26,9 @@ class SiswaController extends Controller
     }
     public function index()
     {
-        $id    = Auth::user()->id;
-        $siswa = Student::where('user_id', $id)->get('id');
-        $kelas = ClassRoom::with(['class_student' => function ($query) use ($siswa) {
-            $query->where('student_id', $siswa);
-        }])->get();
-
+        $id            = Auth::user()->student->id;
+        $class_student = ClassStudent::where('student_id', $id)->get('class_room_id');
+        $kelas         = ClassRoom::whereIn('id', $class_student)->orderBy('id', 'desc')->get();
         return view('dashboard.kelas.siswa.index', compact('kelas'));
     }
 
