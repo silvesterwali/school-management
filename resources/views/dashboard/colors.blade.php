@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid">
-            <div class="fade-in">
+          <div class="fade-in">
               <div class="card">
                 <div class="card-header"> Theme colors</div>
                 <div class="card-body">
@@ -95,4 +95,3 @@
 @section('javascript')
     <script src="{{ asset('js/colors.js') }}"></script>
 @endsection
-
