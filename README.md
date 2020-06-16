@@ -29,3 +29,5 @@ check status
 -git status
 // untuk packega tcpdf
 -composer require elibyy/tcpdf-laravel
+
+//elgan tolong tarik data lalu lakukan =>php artisan migrate
