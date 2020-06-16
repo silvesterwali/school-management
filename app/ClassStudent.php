@@ -13,12 +13,12 @@ class ClassStudent extends Model
     //ini bertujunan untuk mengetahui siswa yang mengabil kelas ini
     public function student()
     {
-        return $this->belongsTo('App\Student');
+        return $this->belongsTo('App\Student')->withDefault(['nisn' => '', 'nama' => '']);
     }
     //untuk mengetahui kelas yang akan di akses oleh siswa
     public function class_room()
     {
-        return $this->belongsTo('App\ClassRoom');
+        return $this->belongsTo('App\ClassRoom')->withDefault(['id' => '']);
     }
     //untuk menampilkan data hubungan antara kelas siswa dan mapel
     public function class_room_Student_course()
@@ -34,6 +34,6 @@ class ClassStudent extends Model
     //untuk mengetahui data extracuri culer kelas;
     public function class_extracurricular()
     {
-        return $this->hasOne('App\ClassExtracurricular');
+        return $this->hasOne('App\ClassExtracurricular')->withDefaul([]);
     }
 }

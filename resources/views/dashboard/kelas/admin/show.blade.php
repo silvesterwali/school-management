@@ -113,6 +113,8 @@
                                                 <th>KKM Pengetahuan</th>
                                                 <th>KKM Keterampilan</th>
                                                 <th>Nilai Tugas</th>
+                                                <th>Nilai Tugas 2</th>
+                                                <th>Nilai Tugas 3</th>
                                                 <th>Ulangan Harian</th>
                                                 <th>Uts</th>
                                                 <th>Uas</th>
@@ -266,6 +268,7 @@
                 ]
             });
 
+
             $('#SpantaTable').DataTable({
                 proccessing:true,
                 serverSide:true,
@@ -311,6 +314,14 @@
                     {
                         data:'nilaitugas',
                         name:'nilaitugas',
+                    },
+                    {
+                        data:'nilaitugas_dua',
+                        name:'nilaitugas_dua',
+                    },
+                    {
+                        data:'nilaitugas_tiga',
+                        name:'nilaitugas_tiga',
                     },
                     {
                         data:'ulanganharian',

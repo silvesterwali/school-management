@@ -123,20 +123,24 @@ class GuruController extends Controller
         $kkmpengetahuan  = $request->kkmpengetahuan;
         $kkmketerampilan = $request->kkmketerampilan;
         $nilaitugas      = $request->nilaitugas;
+        $nilaitugas_dua  = $request->nilaitugas_dua;
+        $nilaitugas_tiga = $request->nilaitugas_tiga;
         $ulanganharian   = $request->ulanganharian;
         $uts             = $request->uts;
         $uas             = $request->uas;
-        $keterangan      = $request->kererangan;
+        $keterangan      = $request->keterangan;
         for ($i = 0; $i < count($id); $i++) {
             ClassRoomStudentCourse::where('id', $id[$i])
                 ->update([
                     "kkmpengetahuan"  => $kkmpengetahuan[$i],
                     "kkmketerampilan" => $kkmketerampilan[$i],
                     "nilaitugas"      => $nilaitugas[$i],
+                    "nilaitugas_dua"  => $nilaitugas_dua[$i],
+                    "nilaitugas_tiga" => $nilaitugas_tiga[$i],
                     "ulanganharian"   => $ulanganharian[$i],
                     "uts"             => $uts[$i],
                     "uas"             => $uas[$i],
-                    "keterangan"      => $keterangan,
+                    "keterangan"      => $keterangan[$i],
                 ]);
         }
         return redirect()->

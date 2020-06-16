@@ -14,13 +14,13 @@ class ClassCourse extends Model
     //ini akan mengetahui class mana dia berada
     public function class_room()
     {
-        return $this->belongsTo('App\ClassRoom');
+        return $this->belongsTo('App\ClassRoom')->withDefault(['class_room']);
     }
 
     //ini mengetahui matapelajaran apa yang berrelasi
     public function course()
     {
-        return $this->belongsTo('App\Course');
+        return $this->belongsTo('App\Course')->withDefault(['course']);
     }
 // bro saya lagi rubah disini
 }

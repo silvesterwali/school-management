@@ -42,6 +42,8 @@
                                             <td>KKM Pengetahun</td>
                                             <td>KKM Keterampilan</td>
                                             <td>Nilai Tugas</td>
+                                            <td>Nilai Tugas 2</td>
+                                            <td>Nilai Tugas 3</td>
                                             <td>Ulangan Harian</td>
                                             <td>UTS</td>
                                             <td>UAS</td>
@@ -82,6 +84,24 @@
                                                     @include('dashboard.base.feedback', ['field' => 'nilaitugas'])
                                                 </div>
                                                     </td>
+
+                                                     <td>
+                                                    <div class="form-group{{ $errors->has('nilaitugas_dua') ? ' has-danger' : '' }}">
+                                                    <input type="number" name="nilaitugas_dua[]"
+                                                        class="form-control form-control-alternative{{ $errors->has('nilaitugas_dua') ? ' is-invalid' : '' }}"
+                                                        placeholder="{{__('Nilai Tugas 2') }}" value="{{ $km->nilaitugas_dua }}">
+                                                    @include('dashboard.base.feedback', ['field' => 'nilaitugas_dua'])
+                                                </div>
+                                                    </td>
+
+                                                     <td>
+                                                    <div class="form-group{{ $errors->has('nilaitugas_tiga') ? ' has-danger' : '' }}">
+                                                    <input type="number" name="nilaitugas_tiga[]"
+                                                        class="form-control form-control-alternative{{ $errors->has('nilaitugas_tiga') ? ' is-invalid' : '' }}"
+                                                        placeholder="{{__('Nilai Tugas 3') }}" value="{{ $km->nilaitugas_tiga }}">
+                                                    @include('dashboard.base.feedback', ['field' => 'nilaitugas_tiga'])
+                                                </div>
+                                                    </td>
                                                     <td>
                                                     <div class="form-group{{ $errors->has('ulanganharian') ? ' has-danger' : '' }}">
                                                     <input type="number" name="ulanganharian[]"
@@ -108,7 +128,7 @@
                                                     </td>
                                                     <td>
                                                     <div class="form-group{{ $errors->has('keterangan') ? ' has-danger' : '' }}">
-                                                    <textarea name="keterangan">
+                                                    <textarea name="keterangan[]">
                                                             {{ $km->keterangan }}
                                                     </textarea>
 

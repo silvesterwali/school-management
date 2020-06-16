@@ -371,15 +371,19 @@ class SiswaPrintMandiriController extends Controller
         $jumlahMapel    = count($nilai);
         $jumlahRataRata = 0;
         foreach ($nilai as $key => $nilai_mapel) {
-            $nomor              = $key + 1;
-            $nama_mapel         = $nilai_mapel->class_course->course->mapel;
-            $kkmpengetahuan     = $nilai_mapel->kkmpengetahuan !== null ? $nilai_mapel->kkmpengetahuan : 0;
-            $kkmketerampilan    = $nilai_mapel->kkmketerampilan !== null ? $nilai_mapel->kkmketerampilan : 0;
-            $nilaitugas         = $nilai_mapel->nilaitugas !== null ? $nilai_mapel->nilaitugas : 0;
+            $nomor           = $key + 1;
+            $nama_mapel      = $nilai_mapel->class_course->course->mapel;
+            $kkmpengetahuan  = $nilai_mapel->kkmpengetahuan !== null ? $nilai_mapel->kkmpengetahuan : 0;
+            $kkmketerampilan = $nilai_mapel->kkmketerampilan !== null ? $nilai_mapel->kkmketerampilan : 0;
+            $nilaitugas      = $nilai_mapel->nilaitugas !== null ? $nilai_mapel->nilaitugas : 0;
+            $nilaitugas_dua  = $nilai_mapel->nilaitugas_dua !== null ? $nilai_mapel->nilaitugas_dua : 0;
+            $nilaitugas_tiga = $nilai_mapel->nilaitugas_tiga !== null ? $nilai_mapel->nilaitugas_tiga : 0;
+            $totalTugas      = $nilaitugas + $nilaitugas_dua + $nilaitugas_tiga / 300;
+
             $nilaiulanganharian = $nilai_mapel->ulanganharian !== null ? $nilai_mapel->ulanganharian : 0;
             $nilaiuts           = $nilai_mapel->uts !== null ? $nilai_mapel->uts : 0;
             $nilaiuas           = $nilai_mapel->uas !== null ? $nilai_mapel->uas : 0;
-            $rata_rata          = ($kkmpengetahuan + $kkmketerampilan + $nilaitugas + $nilaiulanganharian + $nilaiuts + $nilaiuas) / 6;
+            $rata_rata          = ($kkmpengetahuan + $kkmketerampilan + $totalTugas + $nilaiulanganharian + $nilaiuts + $nilaiuas) / 6;
             $pembulatan         = round($rata_rata, 2);
             $jumlahRataRata += $pembulatan;
             $tblNilai .= '<tr>
@@ -387,7 +391,7 @@ class SiswaPrintMandiriController extends Controller
                             <td  width="30%">' . $nama_mapel . '</td>
                             <td  align="center"  width="10%" >' . $kkmpengetahuan . '</td>
                             <td  align="center"  width="10%" >' . $kkmketerampilan . '</td>
-                            <td  align="center"  width="10%" >' . $nilaitugas . '</td>
+                            <td  align="center"  width="10%" >' . $totalTugas . '</td>
                             <td  align="center"  width="10%" >' . $nilaiulanganharian . '</td>
                             <td  align="center"  width="10%" >' . $nilaiuts . '</td>
                             <td  align="center"  width="10%" >' . $nilaiuas . '</td>

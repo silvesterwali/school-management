@@ -184,6 +184,8 @@
                                                 <th>KKM Pengetahuan</th>
                                                 <th>KKM Keterampilan</th>
                                                 <th>Nilai Tugas</th>
+                                                <th>Nilai Tugas 2</th>
+                                                <th>Nilai Tugas 3</th>
                                                 <th>Ulangan Harian</th>
                                                 <th>Uts</th>
                                                 <th>Uas</th>
@@ -389,6 +391,15 @@ src="{{ asset('DataTables')}}/DataTables-1.10.20/js/dataTables.bootstrap4.min.js
                     data:'nilaitugas',
                     name:'nilaitugas',
                 },
+                 {
+                    data:'nilaitugas_dua',
+                    name:'nilaitugas_dua',
+                },
+                 {
+                    data:'nilaitugas_tiga',
+                    name:'nilaitugas_tiga',
+                },
+
                 {
                     data:'ulanganharian',
                     name:'ulanganharian',

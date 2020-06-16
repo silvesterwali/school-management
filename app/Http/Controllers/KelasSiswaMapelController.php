@@ -31,6 +31,7 @@ class KelasSiswaMapelController extends Controller
             $data = ClassRoomStudentCourse::with(['class_student' => function ($query) use ($kelas) {
                 $query->where('class_room_id', $kelas);
             }])->get();
+
             return DataTables::of($data)
                 ->addColumn('nisn', function ($data) {
                     return $data->class_student->student->nisn;
@@ -75,6 +76,36 @@ class KelasSiswaMapelController extends Controller
                     $isAdmin      = $this->check_admin();
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->nilaitugas;
+                    }
+                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                })
+                ->editColumn('nilaitugas', function ($data) {
+                    $myId         = Auth::user()->id;
+                    $waliKelas    = $data->class_course->class_room->teacher->user_id;
+                    $guruPengajar = $data->class_course->course->teacher->user_id;
+                    $isAdmin      = $this->check_admin();
+                    if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
+                        return $data->nilaitugas;
+                    }
+                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                })
+                ->editColumn('nilaitugas_dua', function ($data) {
+                    $myId         = Auth::user()->id;
+                    $waliKelas    = $data->class_course->class_room->teacher->user_id;
+                    $guruPengajar = $data->class_course->course->teacher->user_id;
+                    $isAdmin      = $this->check_admin();
+                    if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
+                        return $data->nilaitugas_dua;
+                    }
+                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                })
+                ->editColumn('nilaitugas_tiga', function ($data) {
+                    $myId         = Auth::user()->id;
+                    $waliKelas    = $data->class_course->class_room->teacher->user_id;
+                    $guruPengajar = $data->class_course->course->teacher->user_id;
+                    $isAdmin      = $this->check_admin();
+                    if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
+                        return $data->nilaitugas_tiga;
                     }
                     return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
                 })
@@ -197,6 +228,7 @@ class KelasSiswaMapelController extends Controller
                 function ($query) use ($extrakurikuler) {
                     $query->where("class_room_id", $extrakurikuler);
                 }])->get();
+
             return DataTables::of($data)
                 ->addColumn('nisn',
                     function ($data) {
@@ -208,12 +240,12 @@ class KelasSiswaMapelController extends Controller
                     })
                 ->addColumn('action', function ($data) {
                     $isAdmin = $this->check_admin();
-
-                    $btn = "<a href='" . route('extrakurikuler.edit',
-                        ['kelas' => $data->class_student->class_room->id, 'extrakurikuler' => $data->id]) . "'
+                    $id      = $data !== null ? $data->id : '';
+                    $btn     = "<a href='" . route('extrakurikuler.edit',
+                        ['kelas' => $data->class_student->class_room->id, 'extrakurikuler' => $id]) . "'
                     class='btn btn-outline-info btn-sm small'><i class='fa fa-pencil-alt '></i>Edit</a>";
                     $del = "
-                        <form method='post' action='" . route('extrakurikuler.delete', $data->id) . "'>
+                        <form method='post' action='" . route('extrakurikuler.delete', $id) . "'>
                         " . csrf_field() . "
                         <input type='hidden' name='_method' value='delete'>
                         <button class='btn btn-outline-danger btn-sm  small' type='submit'> <i class='fa fa-trash-alt '></i> Hapus</button>
@@ -294,7 +326,7 @@ class KelasSiswaMapelController extends Controller
     }
 
     /**
-         * Store a newly created resource in storage.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -326,7 +358,6 @@ class KelasSiswaMapelController extends Controller
         //
     }
 
-
     /**
      * Update the specified resource in storage.
      *
@@ -350,4 +381,3 @@ class KelasSiswaMapelController extends Controller
         //
     }
 }
-?>

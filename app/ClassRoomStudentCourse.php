@@ -12,17 +12,18 @@ class ClassRoomStudentCourse extends Model
         "class_student_id", "class_course_id",
         "semester", "kkmpengetahuan",
         "kkmketerampilan", "nilaitugas",
+        "nilaitugas_dua", "nilaitugas_tiga",
         "ulanganharian", "uts", "uas",
     ];
 
     //untuk menampikan hubungan antara classroom
     public function class_course()
     {
-        return $this->belongsTo('App\ClassCourse');
+        return $this->belongsTo('App\ClassCourse')->withDefault(['course']);
     }
     //untuk menampilkan hubungan antara
     public function class_student()
     {
-        return $this->belongsTo('App\ClassStudent');
+        return $this->belongsTo('App\ClassStudent')->withDefault(['student']);
     }
 }

@@ -128,6 +128,8 @@
                                                 <th>KKM Pengetahuan</th>
                                                 <th>KKM Keterampilan</th>
                                                 <th>Nilai Tugas</th>
+                                                <th>Nilai Tugas 2</th>
+                                                <th>Nilai Tugas 3</th>
                                                 <th>Ulangan Harian</th>
                                                 <th>Uts</th>
                                                 <th>Uas</th>
@@ -145,6 +147,8 @@
                                                 <td>{{ $nilai->kkmpengetahuan }}</td>
                                                 <td>{{ $nilai->kkmketerampilan }}</td>
                                                 <td>{{ $nilai->nilaitugas }}</td>
+                                                <td>{{ $nilai->nilaitugas_dua }}</td>
+                                                <td>{{ $nilai->nilaitugas_tiga }}</td>
                                                 <td>{{ $nilai->ulanganharian }}</td>
                                                 <td>{{ $nilai->uts }}</td>
                                                 <td>{{ $nilai->uas }}</td>

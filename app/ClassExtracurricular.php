@@ -15,6 +15,6 @@ class ClassExtracurricular extends Model
     //untuk memanggil  dimana kelas extra kurikuler ini berlangsung
     public function class_student()
     {
-        return $this->belongsTo('App\ClassStudent');
+        return $this->belongsTo('App\ClassStudent')->withDefault(['class_student']);
     }
 }
