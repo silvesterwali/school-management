@@ -182,6 +182,8 @@ class MenusTableSeeder extends Seeder
         $id = $this->insertLink('admin', 'BREAD', '/bread');
         $this->endDropdown();
 
+        $this->insertLink('user,admin,guru,siswa', 'Access Management', '/UserManagement', 'cil-home');
+
         $this->insertLink('guest', 'Login', '/login', 'cil-account-logout');
         $this->insertLink('guest', 'Register', '/register', 'cil-account-logout');
 
@@ -243,6 +245,8 @@ class MenusTableSeeder extends Seeder
         $this->beginDropdown('guest,user,admin', 'Pages');
 
         $id = $this->insertLink('guest,user,admin,guru,siswa', 'Dashboard', '/');
+        $id = $this->insertLink('user,admin,guru,siswa', 'Access Managment', '/UserManagement');
+
         $id = $this->insertLink('guru,siswa,admin', 'Notes', '/notes');
         $id = $this->insertLink('admin', 'Users', '/users');
         $this->endDropdown();

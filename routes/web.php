@@ -224,6 +224,12 @@ Route::group(['middleware' => ['get.menu']], function () {
         Route::resource('/data_diri_siswa', 'SiswaDataDiriController');
     });
 
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/UserManagement', 'UserManagement@index')->name('userAccess.index');
+        Route::put('/UserManagement/{id}', 'UserManagement@update')->name('userAccess.update');
+
+    });
+
 });
 
 Route::get('/testpdf', 'TestingPdfController@index');
