@@ -31,3 +31,7 @@ check status
 -composer require elibyy/tcpdf-laravel
 
 //elgan tolong tarik data lalu lakukan =>php artisan migrate
+
+bro ..tarik dari git ..
+-- composer install
+-- php artisan migrate
