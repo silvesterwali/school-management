@@ -150,7 +150,7 @@ class SiswaPrintMandiriController extends Controller
             </tr>
             <tr>
                 <th>Alamat Sekolah</th>
-                <td></td>
+                <td>Jln.P.B Sudirman - Dauh puri klod</td>
             </tr>
             <tr>
                 <th>Desa/Kelurahan</th>
@@ -158,7 +158,7 @@ class SiswaPrintMandiriController extends Controller
             </tr>
             <tr>
                 <th>Kecamatan</th>
-                <td>Denpasar Selatan</td>
+                <td>Denpasar Barat</td>
             </tr>
             <tr>
                 <th>Kota/Kabupaten</th>
@@ -378,7 +378,7 @@ class SiswaPrintMandiriController extends Controller
             $nilaitugas      = $nilai_mapel->nilaitugas !== null ? $nilai_mapel->nilaitugas : 0;
             $nilaitugas_dua  = $nilai_mapel->nilaitugas_dua !== null ? $nilai_mapel->nilaitugas_dua : 0;
             $nilaitugas_tiga = $nilai_mapel->nilaitugas_tiga !== null ? $nilai_mapel->nilaitugas_tiga : 0;
-            $totalTugas      = $nilaitugas + $nilaitugas_dua + $nilaitugas_tiga / 300;
+            $totalTugas      = round($nilaitugas + $nilaitugas_dua + $nilaitugas_tiga / 300, 2);
 
             $nilaiulanganharian = $nilai_mapel->ulanganharian !== null ? $nilai_mapel->ulanganharian : 0;
             $nilaiuts           = $nilai_mapel->uts !== null ? $nilai_mapel->uts : 0;
