@@ -23,7 +23,6 @@
                         <ol>
                             <li>Pilih Siswa/i yang akan dicetak laporannya</li>
                             <li>Pilih Semester </li>
-                            <li>Pilih matapelajaran ayan akan  dicetak </li>
                         </ol>
                         <form id="formMapel" action="{{ route('cetak_laporan_semester.store') }}" method="post">
                             {{ csrf_field () }}
@@ -45,7 +44,8 @@
                                             <label class="form-check-label">
                                                 <input name="semester"
                                                     class="form-check-input {{ $errors->has('semester') ? ' is-invalid' : '' }}"
-                                                    type="radio" value="1" {{ old('semester') == 1 ? 'checked' : ''}}>
+                                                    type="radio" value="1"
+                                                    {{ old('semester') == 1 ? 'checked' : ''}}>
                                                 Semester Ganjil
                                                 <span class="form-check-sign">
 
@@ -68,7 +68,7 @@
                                 </div>
 
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                 <div class="table-responsive">
                                 <h3>Table Siswa</h3>
                                 <table class="table table-condensed table-sm table-hover">
@@ -90,10 +90,10 @@
                                             <td>{{ $mp->student->grade }}</td>
                                             <td class="text-center">
                                                 <input
-                                                name="class_student[]"
+                                                name="class_student"
                                                 value="{{ $mp->id }}"
-                                                {{ old('class_student[]') == $mp->id ? 'checked' : ''}}
-                                                type="checkbox"
+                                                {{ old('class_student') == $mp->id ? 'checked' : ''}}
+                                                type="radio"
                                                 class="form-check-input selectedMapel">
 
                                             </td>
@@ -103,38 +103,7 @@
                                 </table>
                             </div>
                                 </div>
-                                <div class="col-sm-6">
-                                <div class="table-responsive">
-                                <h3>Table Mapel</h3>
-                                <table class="table table-condensed table-sm table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>KD MAPEL</th>
-                                            <th>MAPEL</th>
-                                            <th>#</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($course as $course)
-                                        <tr>
-                                            <td>{{ $course->course->kdmapel }}</td>
-                                            <td>{{ $course->course->mapel }}</td>
 
-                                            <td class="text-center">
-                                                <input
-                                                name="class_mapel[]"
-                                                value="{{ $course->id }}"
-                                                {{ old('class_mapel') == $course->id ? 'checked' : ''}}
-                                                type="checkbox"
-                                                class="form-check-input selectedMapel">
-
-                                            </td>
-                                        </tr>
-                                        @endforeach()
-                                    </tbody>
-                                </table>
-                            </div>
-                                </div>
                             </div>
 
                             <div class="row">

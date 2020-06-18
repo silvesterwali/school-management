@@ -95,22 +95,25 @@ class SiswaController extends Controller
                 array_push($labels, $nm->class_course->course->kdmapel);
             }
 
-            $kkmpengetahuan  = $nm->kkmpengetahuan == null ? $nm->kkmpengetahuan : 0;
-            $kkmketerampilan = $nm->kkmketerampilan == null ? $nm->kkmketerampilan : 0;
-            $nilaitugas      = $nm->nilaitugas == null ? $nm->nilaitugas : 0;
-            $ulanganharian   = $nm->ulanganharian == null ? $nm->ulanganharian : 0;
-            $uts             = $nm->uts == null ? $nm->uts : 0;
-            $uas             = $nm->uas == null ? $nm->uas : 0;
-            $jumlah_nilai    = $kkmketerampilan + $kkmpengetahuan + $nilaitugas + $ulanganharian + $uts + $uas;
+            $kkmpengetahuan  = $nm->kkmpengetahuan !== null ? $nm->kkmpengetahuan : 0;
+            $kkmketerampilan = $nm->kkmketerampilan !== null ? $nm->kkmketerampilan : 0;
+            $nilaitugas      = $nm->nilaitugas !== null ? $nm->nilaitugas : 0;
+            $nilaitugas2     = $nm->nilaitugas_dua !== null ? $nm->nilaitugas_dua : 0;
+            $nilaitugas3     = $nm->nilaitugas_tiga !== null ? $nm->nilaitugas_tiga : 0;
+            $lats            = $nilaitugas + $nilaitugas2 + $nilaitugas3 / 300;
+            $ulanganharian   = $nm->ulanganharian !== null ? $nm->ulanganharian : 0;
+            $uts             = $nm->uts !== null ? $nm->uts : 0;
+            $uas             = $nm->uas !== null ? $nm->uas : 0;
+            $jumlah_nilai    = $kkmketerampilan + $kkmpengetahuan + $lats + $ulanganharian + $uts + $uas;
             $nilai_rata      = 0;
 
             if ($jumlah_nilai > 0) {
-                //$nilai_rata = $jumlah_nilai / 60;
+                $nilai_rata = $jumlah_nilai / 6;
             }
             if ($nm->semester == 1) {
                 array_push($dataset1, $nilai_rata);
             } else {
-                // array_push($dataset2, $nilai_rata);
+                array_push($dataset2, $nilai_rata);
             }
 
         }
