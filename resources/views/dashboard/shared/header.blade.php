@@ -8,7 +8,7 @@
             <span class="c-header-toggler-icon"></span></button>
         <a class="c-header-brand d-sm-none" href="#"><img
             class="c-header-brand"
-            src="/assets/brand/coreui-base.svg"
+            src="/assets/img/logo-styoseph.jpeg"
             width="97"
             height="46"
             alt="CoreUI Logo"></a>
