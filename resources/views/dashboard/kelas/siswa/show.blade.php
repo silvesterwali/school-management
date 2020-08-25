@@ -131,6 +131,8 @@
                                                 <th>Nilai Tugas 2</th>
                                                 <th>Nilai Tugas 3</th>
                                                 <th>Ulangan Harian</th>
+                                                <th>Ulangan Harian 2</th>
+                                                <th>Ulangan Harian 3</th>
                                                 <th>Uts</th>
                                                 <th>Uas</th>
                                                 <th>Keterangan</th>
@@ -150,6 +152,8 @@
                                                 <td>{{ $nilai->nilaitugas_dua }}</td>
                                                 <td>{{ $nilai->nilaitugas_tiga }}</td>
                                                 <td>{{ $nilai->ulanganharian }}</td>
+                                                <td>{{ $nilai->ulanganharian_dua }}</td>
+                                                <td>{{ $nilai->ulanganharian_tiga }}</td>
                                                 <td>{{ $nilai->uts }}</td>
                                                 <td>{{ $nilai->uas }}</td>
                                                 <td>{{ $nilai->keterangan }}</td>

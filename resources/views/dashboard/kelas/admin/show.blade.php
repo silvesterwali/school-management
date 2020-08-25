@@ -116,6 +116,8 @@
                                                 <th>Nilai Tugas 2</th>
                                                 <th>Nilai Tugas 3</th>
                                                 <th>Ulangan Harian</th>
+                                                <th>Ulangan Harian 2</th>
+                                                <th>Ulangan Harian 3</th>
                                                 <th>Uts</th>
                                                 <th>Uas</th>
                                                 <td>Keterangan</td>
@@ -326,6 +328,14 @@
                     {
                         data:'ulanganharian',
                         name:'ulanganharian',
+                    },
+                        {
+                        data:'ulanganharian_dua',
+                        name:'ulanganharian_dua',
+                    },
+                        {
+                        data:'ulanganharian_tiga',
+                        name:'ulanganharian_tiga',
                     },
                     {
                         data:'uts',

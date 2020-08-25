@@ -120,6 +120,26 @@ class KelasSiswaMapelController extends Controller
                     }
                     return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
                 })
+                ->editColumn('ulanganharian_dua', function ($data) {
+                    $myId         = Auth::user()->id;
+                    $waliKelas    = $data->class_course->class_room->teacher->user_id;
+                    $guruPengajar = $data->class_course->course->teacher->user_id;
+                    $isAdmin      = $this->check_admin();
+                    if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
+                        return $data->ulanganharian_dua;
+                    }
+                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                })
+                ->editColumn('ulanganharian_tiga', function ($data) {
+                    $myId         = Auth::user()->id;
+                    $waliKelas    = $data->class_course->class_room->teacher->user_id;
+                    $guruPengajar = $data->class_course->course->teacher->user_id;
+                    $isAdmin      = $this->check_admin();
+                    if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
+                        return $data->ulanganharian_tiga;
+                    }
+                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                })
                 ->editColumn('uts', function ($data) {
                     $myId         = Auth::user()->id;
                     $waliKelas    = $data->class_course->class_room->teacher->user_id;

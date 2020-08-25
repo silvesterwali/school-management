@@ -357,17 +357,21 @@ class SiswaPrintMandiriController extends Controller
 
         $tblNilai = '
             <table cellspacing="0" cellpadding="1" border="0.2">
+                          <tr>
+                        <td style="text-align:justify" align="center" rowspan="2"  width="5%" >No</td>
+                        <td  style="text-align:justify"  align="center" rowspan="2"  width="30%" >Mata Pelajaran</td>
+                        <td  width="15%"  rowspan="2"  align="center">KKM</td>
+                        <td  width="25%" colspan="2" align="center">Pengetahuan</td>
+                        <td  width="25%" colspan="2" align="center">Keterampilan</td>
+                    </tr>
                     <tr>
-                            <td  align="center" width="5%" >No</td>
-                            <td  align="center" width="30%" >Mata Pelajaran</td>
-                            <td width="10%"  align="center">KKM Peng.</td>
-                            <td width="10%" align="center">KKM Ket. </td>
-                            <td  width="10%" align="center">Tugas</td>
-                            <td width="10%"  align="center">Ulangan Harian</td>
-                            <td width="10%" align="center">UTS</td>
-                            <td  width="10%" align="center">UAS</td>
-                            <td  width="5%" align="center">Rata-Rata</td>
-                    </tr>';
+                        <td  align="center">Nilai</td>
+                        <td  align="center">Predikat</td>
+                        <td  align="center">Nilai</td>
+                        <td  align="center">Predikat</td>
+                    </tr>
+
+                    ';
         $jumlahMapel    = count($nilai);
         $jumlahRataRata = 0;
         foreach ($nilai as $key => $nilai_mapel) {
@@ -378,30 +382,63 @@ class SiswaPrintMandiriController extends Controller
             $nilaitugas      = $nilai_mapel->nilaitugas !== null ? $nilai_mapel->nilaitugas : 0;
             $nilaitugas_dua  = $nilai_mapel->nilaitugas_dua !== null ? $nilai_mapel->nilaitugas_dua : 0;
             $nilaitugas_tiga = $nilai_mapel->nilaitugas_tiga !== null ? $nilai_mapel->nilaitugas_tiga : 0;
-            $totalTugas      = round($nilaitugas + $nilaitugas_dua + $nilaitugas_tiga / 300, 2);
 
-            $nilaiulanganharian = $nilai_mapel->ulanganharian !== null ? $nilai_mapel->ulanganharian : 0;
-            $nilaiuts           = $nilai_mapel->uts !== null ? $nilai_mapel->uts : 0;
-            $nilaiuas           = $nilai_mapel->uas !== null ? $nilai_mapel->uas : 0;
-            $rata_rata          = ($kkmpengetahuan + $kkmketerampilan + $totalTugas + $nilaiulanganharian + $nilaiuts + $nilaiuas) / 6;
-            $pembulatan         = round($rata_rata, 2);
+            $totalTugas = $nilaitugas + $nilaitugas_dua + $nilaitugas_tiga / 30;
+
+            $nilaiulanganharian      = $nilai_mapel->ulanganharian !== null ? $nilai_mapel->ulanganharian : 0;
+            $nilaiulanganharian_dua  = $nilai_mapel->ulanganharian_dua !== null ? $nilai_mapel->ulanganharian_dua : 0;
+            $nilaiulanganharian_tiga = $nilai_mapel->ulanganharian_tiga !== null ? $nilai_mapel->ulanganharian_tiga : 0;
+
+            $totalUlaranganHarian = $nilaiulanganharian + $nilaiulanganharian_dua + $nilaiulanganharian_tiga / 30;
+
+            $nilaiuts   = $nilai_mapel->uts !== null ? $nilai_mapel->uts : 0;
+            $nilaiuas   = $nilai_mapel->uas !== null ? $nilai_mapel->uas : 0;
+            $rata_rata  = (($totalTugas + $totalUlaranganHarian / 20) + $nilaiuts + $nilaiuas + $kkmketerampilna) / 30;
+            $pembulatan = round($rata_rata, 2);
+            $statusCode = 'E';
+            if ($pembulatan < 50) {
+                $statusCode = 'E';
+
+            } else if ($pembulatan >= 50 && $pembulatan < 60) {
+                $statusCode = 'D';
+            } else if ($pembulatan >= 60 && $pembulatan < 70) {
+                $statusCode = 'C';
+            } else if ($pembulatan >= 70 && $pembulatan < 80) {
+                $statusCode = 'B';
+            } else if ($pembulatan >= 80 && $pembulatan < 90) {
+                $statusCode = 'A';
+            } else {
+                $statusCode = 'A+';
+            }
+
+            $statusKeterampilan = 'E';
+            if ($kkmketerampilan < 50) {
+                $statusKeterampilan = 'E';
+            } else if ($kkmketerampilan >= 50 && $kkmketerampilan < 60) {
+                $statusKeterampilan = 'D';
+            } else if ($kkmketerampilan >= 60 && $kkmketerampilan < 70) {
+                $statusKeterampilan = 'C';
+            } else if ($kkmketerampilan >= 80 && $kkmketerampilan < 90) {
+                $statusKeterampilan = 'B';
+            } else {
+                $statusKeterampilan = 'A+';
+            }
+
             $jumlahRataRata += $pembulatan;
             $tblNilai .= '<tr>
                             <td  align="center" width="5% ">' . $nomor . '</td>
                             <td  width="30%">' . $nama_mapel . '</td>
-                            <td  align="center"  width="10%" >' . $kkmpengetahuan . '</td>
-                            <td  align="center"  width="10%" >' . $kkmketerampilan . '</td>
-                            <td  align="center"  width="10%" >' . $totalTugas . '</td>
-                            <td  align="center"  width="10%" >' . $nilaiulanganharian . '</td>
-                            <td  align="center"  width="10%" >' . $nilaiuts . '</td>
-                            <td  align="center"  width="10%" >' . $nilaiuas . '</td>
-                            <td  align="center"  width="5%">' . $pembulatan . '</td>
+                            <td  align="center"  width="15%" >' . $kkmpengetahuan . '</td>
+                            <td  align="center"   >' . $pembulatan . '</td>
+                            <td  align="center"   >' . $statusCode . '</td>
+                            <td  align="center"  >' . $kkmketerampilan . '</td>
+                            <td  align="center"  >' . $statusKeterampilan . '</td>
                             </tr>';
         }
-        $jumlahRataRataPermapel = $jumlahRataRata / $jumlahMapel;
+        $jumlahRataRataPermapel = ($jumlahRataRata + $kkmketerampilan) / $jumlahMapel;
         $nilaiKelas             = round($jumlahRataRataPermapel, 2);
         $tblNilai .= '<tr>
-                        <td  colspan="8" align="right"  >Rata-Rata Seluruh</td>
+                        <td  colspan="6" align="right"  >Rata-Rata Seluruh</td>
                         <td  align="center" >' . $nilaiKelas . '</td>
                     </tr></table>';
 

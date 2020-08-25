@@ -119,28 +119,33 @@ class GuruController extends Controller
      */
     public function update(Request $request, ClassRoom $kelas, ClassCourse $mapel, $semester)
     {
-        $id              = $request->id;
-        $kkmpengetahuan  = $request->kkmpengetahuan;
-        $kkmketerampilan = $request->kkmketerampilan;
-        $nilaitugas      = $request->nilaitugas;
-        $nilaitugas_dua  = $request->nilaitugas_dua;
-        $nilaitugas_tiga = $request->nilaitugas_tiga;
-        $ulanganharian   = $request->ulanganharian;
-        $uts             = $request->uts;
-        $uas             = $request->uas;
-        $keterangan      = $request->keterangan;
+        $id                 = $request->id;
+        $kkmpengetahuan     = $request->kkmpengetahuan;
+        $kkmketerampilan    = $request->kkmketerampilan;
+        $nilaitugas         = $request->nilaitugas;
+        $nilaitugas_dua     = $request->nilaitugas_dua;
+        $nilaitugas_tiga    = $request->nilaitugas_tiga;
+        $ulanganharian      = $request->ulanganharian;
+        $ulanganharian_dua  = $request->ulanganharian_dua;
+        $ulanganharian_tiga = $request->ulanganharian_tiga;
+
+        $uts        = $request->uts;
+        $uas        = $request->uas;
+        $keterangan = $request->keterangan;
         for ($i = 0; $i < count($id); $i++) {
             ClassRoomStudentCourse::where('id', $id[$i])
                 ->update([
-                    "kkmpengetahuan"  => $kkmpengetahuan[$i],
-                    "kkmketerampilan" => $kkmketerampilan[$i],
-                    "nilaitugas"      => $nilaitugas[$i],
-                    "nilaitugas_dua"  => $nilaitugas_dua[$i],
-                    "nilaitugas_tiga" => $nilaitugas_tiga[$i],
-                    "ulanganharian"   => $ulanganharian[$i],
-                    "uts"             => $uts[$i],
-                    "uas"             => $uas[$i],
-                    "keterangan"      => $keterangan[$i],
+                    "kkmpengetahuan"     => $kkmpengetahuan[$i],
+                    "kkmketerampilan"    => $kkmketerampilan[$i],
+                    "nilaitugas"         => $nilaitugas[$i],
+                    "nilaitugas_dua"     => $nilaitugas_dua[$i],
+                    "nilaitugas_tiga"    => $nilaitugas_tiga[$i],
+                    "ulanganharian"      => $ulanganharian[$i],
+                    "ulanganharian_dua"  => $ulanganharian_dua[$i],
+                    "ulanganharian_tiga" => $ulanganharian_tiga[$i],
+                    "uts"                => $uts[$i],
+                    "uas"                => $uas[$i],
+                    "keterangan"         => $keterangan[$i],
                 ]);
         }
         return redirect()->

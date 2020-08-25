@@ -13,7 +13,8 @@ class ClassRoomStudentCourse extends Model
         "semester", "kkmpengetahuan",
         "kkmketerampilan", "nilaitugas",
         "nilaitugas_dua", "nilaitugas_tiga",
-        "ulanganharian", "uts", "uas",
+        "ulanganharian", "ulanganharian_dua",
+        "ulanganharian_tiga", "uts", "uas",
     ];
 
     //untuk menampikan hubungan antara classroom

@@ -32,7 +32,7 @@ if (!function_exists('renderDropdown')) {
 ?>
 
       <div class="c-sidebar-brand">
-      <img class="c-sidebar-brand-full rounded-circle" src="assets/img/logo-styoseph.jpeg" width="40" height="46" alt="CoreUI Logo"><img class="c-sidebar-brand-minimized rounded-circle" src="assets/img/logo-styoseph.jpeg" width="40" height="46" alt="CoreUI Logo"></div>
+      <img class="c-sidebar-brand-full rounded-circle" src="/assets/img/logo-styoseph-trans.jpeg" width="40" height="46" alt="CoreUI Logo"><img class="c-sidebar-brand-minimized rounded-circle" src="/assets/img/logo-styoseph-trans.jpeg" width="40" height="46" alt="CoreUI Logo"></div>
         <ul class="c-sidebar-nav">
         @if(isset($appMenus['sidebar menu']))
             @foreach($appMenus['sidebar menu'] as $menuel)

@@ -8,10 +8,10 @@
             <span class="c-header-toggler-icon"></span></button>
         <a class="c-header-brand d-sm-none" href="#"><img
             class="c-header-brand"
-            src="/assets/img/logo-styoseph.jpeg"
-            width="97"
-            height="46"
-            alt="CoreUI Logo"></a>
+            src="/assets/img/logo-styoseph-trans.jpeg"
+            width="50"
+            height="50"
+            alt="CoreUI Logo3"></a>
         <button
             class="c-header-toggler c-class-toggler ml-3 d-md-down-none"
             type="button"

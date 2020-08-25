@@ -100,15 +100,19 @@ class SiswaController extends Controller
             $nilaitugas      = $nm->nilaitugas !== null ? $nm->nilaitugas : 0;
             $nilaitugas2     = $nm->nilaitugas_dua !== null ? $nm->nilaitugas_dua : 0;
             $nilaitugas3     = $nm->nilaitugas_tiga !== null ? $nm->nilaitugas_tiga : 0;
-            $lats            = $nilaitugas + $nilaitugas2 + $nilaitugas3 / 300;
-            $ulanganharian   = $nm->ulanganharian !== null ? $nm->ulanganharian : 0;
-            $uts             = $nm->uts !== null ? $nm->uts : 0;
-            $uas             = $nm->uas !== null ? $nm->uas : 0;
-            $jumlah_nilai    = $kkmketerampilan + $kkmpengetahuan + $lats + $ulanganharian + $uts + $uas;
-            $nilai_rata      = 0;
+            $lats            = $nilaitugas + $nilaitugas2 + $nilaitugas3 / 30;
+
+            $ulanganharian      = $nm->ulanganharian !== null ? $nm->ulanganharian : 0;
+            $ulanganharian_dua  = $nm->ulanganharian_dua !== null ? $nm->ulanganharian_dua : 0;
+            $ulanganharian_tiga = $nm->ulanganharian_tiga !== null ? $nm->ulanganharian_tiga : 0;
+            $totalUlanganHarian = ($ulanganharian + $ulanganharian_dua + $ulanganharian_tiga / 30);
+            $uts                = $nm->uts !== null ? $nm->uts : 0;
+            $uas                = $nm->uas !== null ? $nm->uas : 0;
+            $jumlah_nilai       = (($lats + $totalUlanganHarian / 20) + $uts + $uas) / 30;
+            $nilai_rata         = 0;
 
             if ($jumlah_nilai > 0) {
-                $nilai_rata = $jumlah_nilai / 6;
+                $nilai_rata = rand($jumlah_nilai + $kkmketerampilan / 2, 2);
             }
             if ($nm->semester == 1) {
                 array_push($dataset1, $nilai_rata);
