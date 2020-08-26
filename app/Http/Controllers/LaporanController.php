@@ -393,19 +393,20 @@ class LaporanController extends Controller
             $nilaitugas_dua  = $nilai_mapel->nilaitugas_dua !== null ? $nilai_mapel->nilaitugas_dua : 0;
             $nilaitugas_tiga = $nilai_mapel->nilaitugas_tiga !== null ? $nilai_mapel->nilaitugas_tiga : 0;
 
-            $totalTugas = $nilaitugas + $nilaitugas_dua + $nilaitugas_tiga / 30;
+            $totalTugas = ($nilaitugas + $nilaitugas_dua + $nilaitugas_tiga) / 3;
 
             $nilaiulanganharian      = $nilai_mapel->ulanganharian !== null ? $nilai_mapel->ulanganharian : 0;
             $nilaiulanganharian_dua  = $nilai_mapel->ulanganharian_dua !== null ? $nilai_mapel->ulanganharian_dua : 0;
             $nilaiulanganharian_tiga = $nilai_mapel->ulanganharian_tiga !== null ? $nilai_mapel->ulanganharian_tiga : 0;
 
-            $totalUlaranganHarian = $nilaiulanganharian + $nilaiulanganharian_dua + $nilaiulanganharian_tiga / 30;
+            $totalUlaranganHarian = ($nilaiulanganharian + $nilaiulanganharian_dua + $nilaiulanganharian_tiga) / 3;
 
-            $nilaiuts   = $nilai_mapel->uts !== null ? $nilai_mapel->uts : 0;
-            $nilaiuas   = $nilai_mapel->uas !== null ? $nilai_mapel->uas : 0;
-            $rata_rata  = (($totalTugas + $totalUlaranganHarian / 20) + $nilaiuts + $nilaiuas) / 30;
-            $pembulatan = round($rata_rata, 2);
-            $statusCode = 'E';
+            $nilaiuts             = $nilai_mapel->uts !== null ? $nilai_mapel->uts : 0;
+            $nilaiuas             = $nilai_mapel->uas !== null ? $nilai_mapel->uas : 0;
+            $totalTugasDanUlangan = ($totalTugas + $totalUlaranganHarian) / 2;
+            $rata_rata            = ($totalTugasDanUlangan + $nilaiuts + $nilaiuas) / 3;
+            $pembulatan           = round($rata_rata, 2);
+            $statusCode           = 'E';
             if ($pembulatan < 50) {
                 $statusCode = 'E';
 
@@ -434,7 +435,7 @@ class LaporanController extends Controller
                 $statusKeterampilan = 'A+';
             }
 
-            $jumlahRataRata += $pembulatan;
+            $jumlahRataRata += ($pembulatan + $kkmketerampilan) / 2;
             $tblNilai .= '<tr>
                             <td  align="center" width="5% ">' . $nomor . '</td>
                             <td  width="30%">' . $nama_mapel . '</td>
@@ -445,7 +446,7 @@ class LaporanController extends Controller
                             <td  align="center"  >' . $statusKeterampilan . '</td>
                             </tr>';
         }
-        $jumlahRataRataPermapel = ($jumlahRataRata + $kkmketerampilan) / $jumlahMapel;
+        $jumlahRataRataPermapel = $jumlahRataRata / $jumlahMapel;
         $nilaiKelas             = round($jumlahRataRataPermapel, 2);
         $tblNilai .= '<tr>
                         <td  colspan="6" align="right"  >Rata-Rata Seluruh</td>
