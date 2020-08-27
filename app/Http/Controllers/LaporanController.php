@@ -405,7 +405,7 @@ class LaporanController extends Controller
             $nilaiuas             = $nilai_mapel->uas !== null ? $nilai_mapel->uas : 0;
             $totalTugasDanUlangan = ($totalTugas + $totalUlaranganHarian) / 2;
             $rata_rata            = ($totalTugasDanUlangan + $nilaiuts + $nilaiuas) / 3;
-            $pembulatan           = round($rata_rata, 2);
+            $pembulatan           = round($rata_rata);
             $statusCode           = 'E';
             if ($pembulatan < 50) {
                 $statusCode = 'E';

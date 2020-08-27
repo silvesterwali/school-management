@@ -396,7 +396,7 @@ class SiswaPrintMandiriController extends Controller
             $totalTugasDanUlangan = ($totalTugas + $totalUlaranganHarian) / 2;
 
             $rata_rata  = ($totalTugasDanUlangan + $nilaiuts + $nilaiuas) / 3;
-            $pembulatan = round($rata_rata, 2);
+            $pembulatan = round($rata_rata);
             $statusCode = 'E';
             if ($pembulatan < 50) {
                 $statusCode = 'E';
