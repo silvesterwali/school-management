@@ -115,7 +115,7 @@ class SiswaController extends Controller
 
             if ($jumlah_nilai > 0) {
                 $lastValue  = ($jumlah_nilai + $kkmketerampilan) / 2;
-                $nilai_rata = round($lastValue, 2);
+                $nilai_rata = round($lastValue);
             }
 
             if ($nm->semester == 1) {

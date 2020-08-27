@@ -438,7 +438,7 @@ class SiswaPrintMandiriController extends Controller
                             </tr>';
         }
         $jumlahRataRataPermapel = $jumlahRataRata / $jumlahMapel;
-        $nilaiKelas             = round($jumlahRataRataPermapel, 2);
+        $nilaiKelas             = round($jumlahRataRataPermapel);
         $tblNilai .= '<tr>
                         <td  colspan="6" align="right"  >Rata-Rata Seluruh</td>
                         <td  align="center" >' . $nilaiKelas . '</td>
