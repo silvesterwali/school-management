@@ -429,10 +429,13 @@ class LaporanController extends Controller
                 $statusKeterampilan = 'D';
             } else if ($kkmketerampilan >= 60 && $kkmketerampilan < 70) {
                 $statusKeterampilan = 'C';
-            } else if ($kkmketerampilan >= 80 && $kkmketerampilan < 90) {
+            } else if ($kkmketerampilan >= 70 && $kkmketerampilan < 80) {
                 $statusKeterampilan = 'B';
+            } else if ($kkmketerampilan >= 80 && $kkmketerampilan < 90) {
+                $statusKeterampilan = 'A';
             } else {
                 $statusKeterampilan = 'A+';
+
             }
 
             $jumlahRataRata += ($pembulatan + $kkmketerampilan) / 2;
