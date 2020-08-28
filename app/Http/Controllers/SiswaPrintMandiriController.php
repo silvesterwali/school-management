@@ -424,9 +424,9 @@ class SiswaPrintMandiriController extends Controller
                 $statusKeterampilan = 'D';
             } else if ($totalKKMKeterampilan >= 70 && $totalKKMKeterampilan <= 75) {
                 $statusKeterampilan = 'C';
-            } else if ($totalKKMKeterampilan >= 76 && $totalKKMKeterampilan < 85) {
+            } else if ($totalKKMKeterampilan >= 76 && $totalKKMKeterampilan <= 85) {
                 $statusKeterampilan = 'B';
-            } else if ($totalKKMKeterampilan >= 86 && $totalKKMKeterampilan < 100) {
+            } else if ($totalKKMKeterampilan >= 86 && $totalKKMKeterampilan <= 100) {
                 $statusKeterampilan = 'A';
             }
 
