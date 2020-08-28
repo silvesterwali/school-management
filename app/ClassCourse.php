@@ -22,5 +22,9 @@ class ClassCourse extends Model
     {
         return $this->belongsTo('App\Course')->withDefault(['course']);
     }
+    public function courseSpecif()
+    {
+        return $this->belongsTo('App\Course', 'course_id', 'id');
+    }
 // bro saya lagi rubah disini
 }

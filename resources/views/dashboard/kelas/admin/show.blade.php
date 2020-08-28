@@ -120,6 +120,8 @@
                                                 <th>Ulangan Harian 3</th>
                                                 <th>Uts</th>
                                                 <th>Uas</th>
+                                                <th>Keaktifan</th>
+                                                <th>Kerapian</th>
                                                 <td>Keterangan</td>
                                             </tr>
                                         </thead>

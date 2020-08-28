@@ -357,7 +357,7 @@ class SiswaPrintMandiriController extends Controller
 
         $tblNilai = '
             <table cellspacing="0" cellpadding="1" border="0.2">
-                          <tr>
+                    <tr>
                         <td style="text-align:justify" align="center" rowspan="2"  width="5%" >No</td>
                         <td  style="text-align:justify"  align="center" rowspan="2"  width="30%" >Mata Pelajaran</td>
                         <td  width="15%"  rowspan="2"  align="center">KKM</td>
@@ -385,6 +385,12 @@ class SiswaPrintMandiriController extends Controller
 
             $totalTugas = ($nilaitugas + $nilaitugas_dua + $nilaitugas_tiga) / 3;
 
+            $nilaiKeaktifan = $nilai_mapel->keaktifan !== null ? $nilai_mapel->keaktifan : 0;
+            $nilaiKerapian  = $nilai_mapel->kerapian !== null ? $nilai_mapel->kerapian : 0;
+
+// total keterampilan
+            $totalKKMKeterampilan = round(($nilaiKeaktifan + $nilaiKerapian) / 2);
+
             $nilaiulanganharian      = $nilai_mapel->ulanganharian !== null ? $nilai_mapel->ulanganharian : 0;
             $nilaiulanganharian_dua  = $nilai_mapel->ulanganharian_dua !== null ? $nilai_mapel->ulanganharian_dua : 0;
             $nilaiulanganharian_tiga = $nilai_mapel->ulanganharian_tiga !== null ? $nilai_mapel->ulanganharian_tiga : 0;
@@ -398,45 +404,40 @@ class SiswaPrintMandiriController extends Controller
             $rata_rata  = ($totalTugasDanUlangan + $nilaiuts + $nilaiuas) / 3;
             $pembulatan = round($rata_rata);
             $statusCode = 'E';
-            if ($pembulatan < 50) {
+            if ($pembulatan <= 60) {
                 $statusCode = 'E';
 
-            } else if ($pembulatan >= 50 && $pembulatan < 60) {
+            } else if ($pembulatan >= 60 && $pembulatan <= 69) {
                 $statusCode = 'D';
-            } else if ($pembulatan >= 60 && $pembulatan < 70) {
+            } else if ($pembulatan >= 70 && $pembulatan <= 75) {
                 $statusCode = 'C';
-            } else if ($pembulatan >= 70 && $pembulatan < 80) {
+            } else if ($pembulatan >= 76 && $pembulatan <= 85) {
                 $statusCode = 'B';
-            } else if ($pembulatan >= 80 && $pembulatan < 90) {
+            } else if ($pembulatan >= 86 && $pembulatan <= 100) {
                 $statusCode = 'A';
-            } else {
-                $statusCode = 'A+';
             }
 
             $statusKeterampilan = 'E';
-            if ($kkmketerampilan < 50) {
+            if ($totalKKMKeterampilan <= 60) {
                 $statusKeterampilan = 'E';
-            } else if ($kkmketerampilan >= 50 && $kkmketerampilan < 60) {
+            } else if ($totalKKMKeterampilan >= 60 && $totalKKMKeterampilan <= 69) {
                 $statusKeterampilan = 'D';
-            } else if ($kkmketerampilan >= 60 && $kkmketerampilan < 70) {
+            } else if ($totalKKMKeterampilan >= 70 && $totalKKMKeterampilan <= 75) {
                 $statusKeterampilan = 'C';
-            } else if ($kkmketerampilan >= 70 && $kkmketerampilan < 80) {
+            } else if ($totalKKMKeterampilan >= 76 && $totalKKMKeterampilan < 85) {
                 $statusKeterampilan = 'B';
-            } else if ($kkmketerampilan >= 80 && $kkmketerampilan < 90) {
+            } else if ($totalKKMKeterampilan >= 86 && $totalKKMKeterampilan < 100) {
                 $statusKeterampilan = 'A';
-            } else {
-                $statusKeterampilan = 'A+';
-
             }
 
-            $jumlahRataRata += ($pembulatan + $kkmketerampilan) / 2;
+            $jumlahRataRata += ($pembulatan + $totalKKMKeterampilan) / 2;
             $tblNilai .= '<tr>
                             <td  align="center" width="5% ">' . $nomor . '</td>
                             <td  width="30%">' . $nama_mapel . '</td>
                             <td  align="center"  width="15%" >' . $kkmpengetahuan . '</td>
                             <td  align="center"   >' . $pembulatan . '</td>
                             <td  align="center"   >' . $statusCode . '</td>
-                            <td  align="center"  >' . $kkmketerampilan . '</td>
+                            <td  align="center"  >' . $totalKKMKeterampilan . '</td>
                             <td  align="center"  >' . $statusKeterampilan . '</td>
                             </tr>';
         }

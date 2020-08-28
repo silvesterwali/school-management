@@ -30,7 +30,8 @@ if (isset($appMenus['top menu'])) {
             @auth
             <li class="c-header-nav-item d-md-down-none mx-2">
                 <a class="c-header-nav-link">
-                    <svg class="c-icon">
+                 {{ Auth::user()->name }} |
+                    <svg class="c-icon ml-2">
                         <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-envelope-open"></use>
                     </svg>
                 </a>
@@ -43,11 +44,11 @@ if (isset($appMenus['top menu'])) {
                     role="button"
                     aria-haspopup="true"
                     aria-expanded="false">
-                    <div class="c-avatar"><img class="c-avatar-img" src="/assets/img/avatars/7.jpg" alt="user@email.com"></div>
+                    <div class="c-avatar"><img class="c-avatar-img" src="/assets/img/avatars/7.jpg" alt="silvester"></div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right pt-0">
                     <div class="dropdown-header bg-light py-2">
-                        <strong>Account</strong>
+                        <strong> {{ Auth::user()->email}}</strong>
                     </div>
                     <a class="dropdown-item" href="#">
                     <a class="dropdown-item" href="#">

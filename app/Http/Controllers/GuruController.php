@@ -128,6 +128,8 @@ class GuruController extends Controller
         $ulanganharian      = $request->ulanganharian;
         $ulanganharian_dua  = $request->ulanganharian_dua;
         $ulanganharian_tiga = $request->ulanganharian_tiga;
+        $keaktifan          = $request->keaktifan;
+        $kerapian           = $request->kerapian;
 
         $uts        = $request->uts;
         $uas        = $request->uas;
@@ -145,7 +147,10 @@ class GuruController extends Controller
                     "ulanganharian_tiga" => $ulanganharian_tiga[$i],
                     "uts"                => $uts[$i],
                     "uas"                => $uas[$i],
+                    "keaktifan"          => $keaktifan[$i],
+                    "kerapian"           => $kerapian[$i],
                     "keterangan"         => $keterangan[$i],
+
                 ]);
         }
         return redirect()->

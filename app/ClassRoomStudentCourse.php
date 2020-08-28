@@ -14,13 +14,13 @@ class ClassRoomStudentCourse extends Model
         "kkmketerampilan", "nilaitugas",
         "nilaitugas_dua", "nilaitugas_tiga",
         "ulanganharian", "ulanganharian_dua",
-        "ulanganharian_tiga", "uts", "uas",
+        "ulanganharian_tiga", "uts", "uas", "keaktifan", "kerapian",
     ];
 
     //untuk menampikan hubungan antara classroom
     public function class_course()
     {
-        return $this->belongsTo('App\ClassCourse')->withDefault(['course']);
+        return $this->belongsTo('App\ClassCourse');
     }
     //untuk menampilkan hubungan antara
     public function class_student()

@@ -10,6 +10,7 @@ use App\ListOfAttendees;
 use Auth;
 use DataTables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KelasSiswaMapelController extends Controller
 {
@@ -28,9 +29,37 @@ class KelasSiswaMapelController extends Controller
 
         if ($request->ajax()) {
             $b    = $kelas;
-            $data = ClassRoomStudentCourse::with(['class_student' => function ($query) use ($kelas) {
-                $query->where('class_room_id', $kelas);
-            }])->get();
+            $myId = Auth::user()->id;
+            $data = [];
+
+            $kelasRoom   = classRoom::where('id', $kelas)->first();
+            $isAdmin     = $this->check_admin();
+            $waliKelas   = "";
+            $gurumapelId = "";
+
+            // kalau bukan admin ya
+            if (!$isAdmin) {
+                $gurumapelId = Auth::user()->teacher->id;
+                $waliKelas   = ClassRoom::where('teacher_id', $gurumapelId)->first();
+
+            }
+
+            //data hanya berlaku untuk  admin dan wali
+
+            if ($waliKelas || $isAdmin) {
+                $data = ClassRoomStudentCourse::with(['class_student' => function ($query) use ($kelas) {
+                    $query->where('class_room_id', $kelas);
+                }])->get();
+            } else {
+
+                $classCourbyTeacher = DB::table('class_courses')
+                    ->leftJoin('courses', 'course_id', '=', 'courses.id')
+                    ->where('class_courses.class_room_id', '=', $kelas)
+                    ->where('courses.teacher_id', '=', $gurumapelId)
+                    ->pluck('class_courses.id');
+
+                $data = ClassRoomStudentCourse::whereIn('class_course_id', $classCourbyTeacher)->get();
+            }
 
             return DataTables::of($data)
                 ->addColumn('nisn', function ($data) {
@@ -57,7 +86,7 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->kkmpengetahuan;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
                 ->editColumn('kkmketerampilan', function ($data) {
                     $myId         = Auth::user()->id;
@@ -67,7 +96,7 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->kkmketerampilan;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
                 ->editColumn('nilaitugas', function ($data) {
                     $myId         = Auth::user()->id;
@@ -77,7 +106,7 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->nilaitugas;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
                 ->editColumn('nilaitugas', function ($data) {
                     $myId         = Auth::user()->id;
@@ -87,7 +116,7 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->nilaitugas;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
                 ->editColumn('nilaitugas_dua', function ($data) {
                     $myId         = Auth::user()->id;
@@ -97,7 +126,7 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->nilaitugas_dua;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
                 ->editColumn('nilaitugas_tiga', function ($data) {
                     $myId         = Auth::user()->id;
@@ -107,7 +136,7 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->nilaitugas_tiga;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
 
                 ->editColumn('ulanganharian', function ($data) {
@@ -118,7 +147,7 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->ulanganharian;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
                 ->editColumn('ulanganharian_dua', function ($data) {
                     $myId         = Auth::user()->id;
@@ -128,7 +157,7 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->ulanganharian_dua;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
                 ->editColumn('ulanganharian_tiga', function ($data) {
                     $myId         = Auth::user()->id;
@@ -138,7 +167,7 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->ulanganharian_tiga;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
                 ->editColumn('uts', function ($data) {
                     $myId         = Auth::user()->id;
@@ -148,7 +177,7 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->uts;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
                 ->editColumn('uas', function ($data) {
                     $myId         = Auth::user()->id;
@@ -158,7 +187,27 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->uas;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
+                })
+                ->editColumn('keaktifan', function ($data) {
+                    $myId         = Auth::user()->id;
+                    $waliKelas    = $data->class_course->class_room->teacher->user_id;
+                    $guruPengajar = $data->class_course->course->teacher->user_id;
+                    $isAdmin      = $this->check_admin();
+                    if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
+                        return $data->keaktifan;
+                    }
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
+                })
+                ->editColumn('kerapian', function ($data) {
+                    $myId         = Auth::user()->id;
+                    $waliKelas    = $data->class_course->class_room->teacher->user_id;
+                    $guruPengajar = $data->class_course->course->teacher->user_id;
+                    $isAdmin      = $this->check_admin();
+                    if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
+                        return $data->kerapian;
+                    }
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
                 ->editColumn('keterangan', function ($data) {
                     $myId         = Auth::user()->id;
@@ -168,9 +217,9 @@ class KelasSiswaMapelController extends Controller
                     if ($isAdmin xor $myId == $guruPengajar || $myId == $waliKelas) {
                         return $data->keterangan;
                     }
-                    return '<div class="alert alert-danger small p-1">Hidding Infomation</div>';
+                    return ' <div class="alert alert-danger small p-1">Hidding Infomation</div> ';
                 })
-                ->rawColumns(['kkmpengetahuan', 'kkmketerampilan', 'nilaitugas', 'ulanganharian', 'uts', 'uas', 'keterangan'])
+                ->rawColumns(['kkmpengetahuan', 'kkmketerampilan', 'nilaitugas', 'nilaitugas_dua', 'nilaitugas_tiga', 'ulanganharian', 'ulanganharian_dua', 'ulanganharian_tiga', 'uts', 'uas', 'keaktifan', 'kerapian', 'keterangan'])
                 ->make(true);
         }
 

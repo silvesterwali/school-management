@@ -135,6 +135,8 @@
                                                 <th>Ulangan Harian 3</th>
                                                 <th>Uts</th>
                                                 <th>Uas</th>
+                                                 <th>Keaktifan</th>
+                                                <th>Kerapian</th>
                                                 <th>Keterangan</th>
                                             </tr>
                                         </thead>
@@ -156,6 +158,8 @@
                                                 <td>{{ $nilai->ulanganharian_tiga }}</td>
                                                 <td>{{ $nilai->uts }}</td>
                                                 <td>{{ $nilai->uas }}</td>
+                                                  <td>{{ $nilai->keaktifan }}</td>
+                                                <td>{{ $nilai->kerapian }}</td>
                                                 <td>{{ $nilai->keterangan }}</td>
                                             </tr>
                                             @endforeach

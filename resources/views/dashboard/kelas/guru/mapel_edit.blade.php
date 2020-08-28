@@ -49,6 +49,8 @@
                                             <th width="150">Ulangan Harian</th>
                                             <th width="150">UTS</th>
                                             <th width="150">UAS</th>
+                                            <th width="150">Keaktifan</th>
+                                            <th width="150">Kerampian</th>
                                             <th width="150">Keterangan</th>
                                         </tr>
                                     </thead>
@@ -145,6 +147,29 @@
                                                     @include('dashboard.base.feedback', ['field' => 'uas'])
                                                 </div>
                                                     </td>
+
+                                                          <td >
+                                                    <div class="form-group{{ $errors->has('keaktifan') ? ' has-danger' : '' }}">
+                                                    <input style="min-width:100px" type="number" name="keaktifan[]"
+                                                        class="form-control form-control-alternative{{ $errors->has('keaktifan') ? ' is-invalid' : '' }}"
+                                                        placeholder="{{__('Keaktifan') }}" value="{{ $km->keaktifan }}">
+                                                    @include('dashboard.base.feedback', ['field' => 'keaktifan'])
+                                                </div>
+                                                    </td>
+
+
+                                                    <td >
+                                                    <div class="form-group{{ $errors->has('kerapian') ? ' has-danger' : '' }}">
+                                                    <input style="min-width:100px" type="number" name="kerapian[]"
+                                                        class="form-control form-control-alternative{{ $errors->has('kerapian') ? ' is-invalid' : '' }}"
+                                                        placeholder="{{__('Kerapian') }}" value="{{ $km->kerapian }}">
+                                                    @include('dashboard.base.feedback', ['field' => 'kerapian'])
+                                                </div>
+                                                </td>
+
+
+
+
                                                     <td >
                                                     <div class="form-group{{ $errors->has('keterangan') ? ' has-danger' : '' }}">
                                                     <textarea style="min-width:200px"  name="keterangan[]" class="form-control">
@@ -157,7 +182,7 @@
                                                 </tr>
                                             @endforeach
                                             <tr>
-                                                <td colspan="11">
+                                                <td colspan="13">
                                                 </td>
                                                 <td colspan="2">
                                                     <button type="submit" class="btn btn-success btn-sm" >

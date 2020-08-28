@@ -191,6 +191,8 @@
                                                 <th>Ulangan Harian 3</th>
                                                 <th>Uts</th>
                                                 <th>Uas</th>
+                                                <th>Keaktifan</th>
+                                                <th>kerampian</th>
                                                 <th>Keterangan</th>
                                             </tr>
                                         </thead>
@@ -423,6 +425,14 @@ src="{{ asset('DataTables')}}/DataTables-1.10.20/js/dataTables.bootstrap4.min.js
                 {
                     data:'uas',
                     name:'uas',
+                },
+                    {
+                    data:'keaktifan',
+                    name:'keaktifan',
+                },
+                    {
+                    data:'kerapian',
+                    name:'kerapian',
                 },
                 {
                     data:'keterangan',
